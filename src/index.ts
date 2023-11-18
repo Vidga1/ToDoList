@@ -1,5 +1,5 @@
 import { store } from "./redux/store";
-import { initTasks, addTask, deleteTask, toggleTask } from "./redux/tasksSlice";
+import { initTasks, addTask, deleteTask, toggleTask } from "./redux/reducers";
 import { Task } from "./redux/actions";
 import "./style/styles.css";
 import crossIcon from "./img/cross.svg";

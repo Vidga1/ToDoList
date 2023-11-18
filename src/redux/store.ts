@@ -1,5 +1,5 @@
 import { configureStore } from "@reduxjs/toolkit";
-import tasksReducer from "./tasksSlice";
+import tasksReducer from "./reducers";
 
 export const store = configureStore({
   reducer: {
@@ -7,6 +7,5 @@ export const store = configureStore({
   },
 });
 
-// Типы для RootState и AppDispatch могут быть полезны при использовании TypeScript
 export type RootState = ReturnType<typeof store.getState>;
 export type AppDispatch = typeof store.dispatch;

@@ -8,6 +8,11 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
+h1 {
+  padding: 30px;
+  margin-top: 20px;
+}
+
 .container {
   background: #222031;
   border-radius: 30px;

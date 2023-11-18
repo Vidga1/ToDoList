@@ -6,23 +6,23 @@ export interface Task {
 
 export type TasksState = Task[];
 
-export const ADD_TASK = "ADD_TASK";
-export const DELETE_TASK = "DELETE_TASK";
-export const TOGGLE_TASK = "TOGGLE_TASK";
+const ADD_TASK = "ADD_TASK";
+const DELETE_TASK = "DELETE_TASK";
+const TOGGLE_TASK = "TOGGLE_TASK";
 
-export interface AddTaskAction {
+interface AddTaskAction {
   type: typeof ADD_TASK;
   payload: Task;
 }
 
-export interface DeleteTaskAction {
+interface DeleteTaskAction {
   type: typeof DELETE_TASK;
-  payload: number; // ID of the task
+  payload: number;
 }
 
-export interface ToggleTaskAction {
+interface ToggleTaskAction {
   type: typeof TOGGLE_TASK;
-  payload: number; // ID of the task
+  payload: number;
 }
 
 export type TaskActionTypes =

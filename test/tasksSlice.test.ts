@@ -3,7 +3,7 @@ import tasksReducer, {
   deleteTask,
   toggleTask,
   initTasks,
-} from "../src/redux/tasksSlice";
+} from "../src/redux/reducers";
 import { Task } from "../src/redux/actions";
 
 describe("tasksSlice", () => {
