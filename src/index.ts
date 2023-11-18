@@ -1,37 +1,45 @@
 import { store } from "./redux/store";
-import { addTask, deleteTask, toggleTask } from "./redux/tasksSlice";
+import { initTasks, addTask, deleteTask, toggleTask } from "./redux/tasksSlice";
 import { Task } from "./redux/actions";
 import "./style/styles.css";
 import crossIcon from "./img/cross.svg";
 import tickIcon from "./img/tick.svg";
 
-
 const form = document.getElementById("form") as HTMLFormElement;
 const taskInput = document.getElementById("taskInput") as HTMLInputElement;
 const tasksList = document.getElementById("tasksList") as HTMLElement;
 
+// Функция для рендеринга задачи
 function renderTask(task: Task) {
   const cssClass = task.done ? "task-title task-title--done" : "task-title";
   const taskHTML = `
-  <li id="${task.id}" class="list-group-item d-flex justify-content-between task-item">
-    <span class="${cssClass}">${task.text}</span>
-    <div class="task-item__buttons">
-      <button type="button" data-action="done" class="btn-action">
-        <img src="${tickIcon}" alt="Done" width="18" height="18">
-      </button>
-      <button type="button" data-action="delete" class="btn-action">
-        <img src="${crossIcon}" alt="Delete" width="18" height="18">
-      </button>
-    </div>
-  </li>`;
+      <li id="${task.id}" class="list-group-item d-flex justify-content-between task-item">
+        <span class="${cssClass}">${task.text}</span>
+        <div class="task-item__buttons">
+          <button type="button" data-action="done" class="btn-action">
+            <img src="${tickIcon}" alt="Done" width="18" height="18">
+          </button>
+          <button type="button" data-action="delete" class="btn-action">
+            <img src="${crossIcon}" alt="Delete" width="18" height="18">
+          </button>
+        </div>
+      </li>`;
   tasksList.insertAdjacentHTML("beforeend", taskHTML);
 }
 
+// Функция для обновления UI
 function updateUI(tasks: Task[]) {
   tasksList.innerHTML = "";
   tasks.forEach(renderTask);
 }
 
+// Инициализация состояния из localStorage
+const savedTasks = localStorage.getItem("tasks");
+const initialState = savedTasks ? JSON.parse(savedTasks) : [];
+
+store.dispatch(initTasks(initialState));
+
+// Обработчики событий
 form.addEventListener("submit", (event) => {
   event.preventDefault();
   const taskText = taskInput.value.trim();
@@ -56,7 +64,12 @@ tasksList.addEventListener("click", (event) => {
   }
 });
 
+// Подписка на изменения в store и сохранение задач в localStorage
 store.subscribe(() => {
   const state = store.getState();
+  localStorage.setItem("tasks", JSON.stringify(state.tasks));
   updateUI(state.tasks);
 });
+
+// Инициализация UI
+updateUI(initialState);
