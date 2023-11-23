@@ -1,11 +1,10 @@
-import { configureStore } from "@reduxjs/toolkit";
-import tasksReducer from "./reducers";
+import { legacy_createStore as createStore, combineReducers } from "redux";
+import tasksReducer from "./tasksReducer";
 
-export const store = configureStore({
-  reducer: {
-    tasks: tasksReducer,
-  },
+const rootReducer = combineReducers({
+  tasks: tasksReducer,
 });
 
-export type RootState = ReturnType<typeof store.getState>;
-export type AppDispatch = typeof store.dispatch;
+const store = createStore(rootReducer);
+
+export default store;

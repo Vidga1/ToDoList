@@ -1,46 +1,28 @@
-export interface Task {
-  id: number;
-  text: string;
-  done: boolean;
-}
+import {
+  Task,
+  ADD_TASK,
+  DELETE_TASK,
+  TOGGLE_TASK,
+  INIT_TASKS,
+  TaskActionTypes,
+} from "./types";
 
-export type TasksState = Task[];
-
-const ADD_TASK = "ADD_TASK";
-const DELETE_TASK = "DELETE_TASK";
-const TOGGLE_TASK = "TOGGLE_TASK";
-
-interface AddTaskAction {
-  type: typeof ADD_TASK;
-  payload: Task;
-}
-
-interface DeleteTaskAction {
-  type: typeof DELETE_TASK;
-  payload: number;
-}
-
-interface ToggleTaskAction {
-  type: typeof TOGGLE_TASK;
-  payload: number;
-}
-
-export type TaskActionTypes =
-  | AddTaskAction
-  | DeleteTaskAction
-  | ToggleTaskAction;
-
-export const addTask = (task: Task): AddTaskAction => ({
+export const addTask = (task: Task): TaskActionTypes => ({
   type: ADD_TASK,
   payload: task,
 });
 
-export const deleteTask = (id: number): DeleteTaskAction => ({
+export const deleteTask = (id: number): TaskActionTypes => ({
   type: DELETE_TASK,
   payload: id,
 });
 
-export const toggleTask = (id: number): ToggleTaskAction => ({
+export const toggleTask = (id: number): TaskActionTypes => ({
   type: TOGGLE_TASK,
   payload: id,
+});
+
+export const initTasks = (tasks: Task[]): TaskActionTypes => ({
+  type: INIT_TASKS,
+  payload: tasks,
 });

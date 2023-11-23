@@ -64,6 +64,7 @@
     "*.{js,ts,tsx,css,md}": "prettier --write"
   },
   "dependencies": {
+    "redux": "^4.2.1",
     "@babel/polyfill": "7.12.1",
     "@reduxjs/toolkit": "^1.9.7",
     "core-js": "3.32.2",
