@@ -7,9 +7,9 @@ import {
   TOGGLE_TASK,
 } from "./types";
 
-const initialState: TasksState = [];
+export const initialState: TasksState = [];
 
-const tasksReducer = (
+export const tasksReducer = (
   state: TasksState,
   action: TaskActionTypes,
 ): TasksState => {
