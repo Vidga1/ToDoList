@@ -1,0 +1,232 @@
+body {
+  background-color: #222031;
+  background: linear-gradient(#2f2a43, #222031);
+  color: #ffffff;
+  font-family: "Poppins", sans-serif;
+  height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+h1 {
+  padding: 30px;
+  margin-top: 20px;
+}
+
+.container {
+  background: #222031;
+  border-radius: 30px;
+  text-align: center;
+}
+
+.mb-5 {
+  font-size: 30px;
+  margin-top: 23px;
+}
+
+.glow-on-hover {
+  width: 220px;
+  height: 50px;
+  border: none;
+  outline: none;
+  color: #fff;
+  background: #111;
+  cursor: pointer;
+  position: relative;
+  z-index: 0;
+  border-radius: 10px;
+}
+
+.glow-on-hover:before {
+  content: "";
+  background: linear-gradient(
+    45deg,
+    #ff0000,
+    #ff7300,
+    #fffb00,
+    #48ff00,
+    #00ffd5,
+    #002bff,
+    #7a00ff,
+    #ff00c8,
+    #ff0000
+  );
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  background-size: 400%;
+  z-index: -1;
+  filter: blur(5px);
+  width: calc(100% + 4px);
+  height: calc(100% + 4px);
+  animation: glowing 20s linear infinite;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  border-radius: 10px;
+}
+
+.glow-on-hover:active {
+  color: #000;
+}
+
+.glow-on-hover:active:after {
+  background: transparent;
+}
+
+.glow-on-hover:hover:before {
+  opacity: 1;
+}
+
+.glow-on-hover:after {
+  z-index: -1;
+  content: "";
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  background: #111;
+  left: 0;
+  top: 0;
+  border-radius: 10px;
+}
+
+@keyframes glowing {
+  0% {
+    background-position: 0 0;
+  }
+  50% {
+    background-position: 400% 0;
+  }
+  100% {
+    background-position: 0 0;
+  }
+}
+
+.card {
+  background: #222031;
+  border-radius: 40px;
+}
+.card input {
+  font-size: 22px;
+  background: #222031;
+}
+.list-group-item {
+  background: #222031;
+}
+.d-flex {
+  border-color: white;
+}
+#taskInput {
+  background: #222031;
+  color: #e0e5ea;
+}
+.up_down_btn {
+  position: fixed;
+  bottom: 50px;
+  right: 130px;
+  z-index: 9999;
+  width: 50px;
+  height: 50px;
+  text-align: center;
+  line-height: 50px;
+  background: #f5f5f5;
+  color: #444;
+  cursor: pointer;
+  border-radius: 10px;
+  display: none;
+}
+
+.up_down_btn:hover {
+  text-decoration: none;
+  background: #e9ebec;
+}
+
+.up_down_btn-show {
+  display: block;
+}
+
+.up_down_btn-disabled {
+  pointer-events: none;
+  cursor: default;
+  opacity: 0;
+}
+
+.display-4 .mb-2 {
+  font-size: 50px;
+}
+
+.aside {
+  height: 400px;
+  background-color: #42be2a;
+}
+.main {
+  height: 400px;
+}
+.d-flex {
+  display: flex;
+}
+.task-title {
+  font-weight: 400;
+  padding-top: 5px;
+  font-size: 22px;
+}
+.gray {
+  color: #0c0101;
+}
+.task-title--done {
+  text-decoration: line-through;
+  color: gray;
+}
+.task-item__buttons {
+  display: flex;
+  column-gap: 5px;
+}
+.notify-holder {
+  height: 60px;
+  margin-bottom: 20px;
+}
+.empty-list {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 1em;
+  padding-bottom: 1em;
+}
+.empty-list__title {
+  font-size: 28px;
+  margin-bottom: 15px;
+  font-weight: 300;
+}
+.empty-list__icon {
+  color: #42be2a;
+  font-size: 32px;
+}
+.btn-action {
+  background-color: #e0e5ea;
+  padding: 8px 10px;
+  cursor: pointer;
+  border: 0;
+  border-radius: 4px;
+  transition: opacity 0.2s ease-in;
+  opacity: 0.5;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.btn-action:hover {
+  background-color: #e0e5ea;
+  opacity: 1;
+}
+
+.btn-action img {
+  pointer-events: none;
+}
+.none {
+  display: none !important;
+}
+
+.float-right {
+  float: right;
+}
